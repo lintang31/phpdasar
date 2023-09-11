@@ -1,0 +1,3 @@
+Executed SQL Statement : insert into `db_sekolah`.`kelas` (`id`, `tingkat_kelas`, `jurusan_sekolah`, `id_sekolah`) values ('1', '2', 'tkj', '') 
+Error Number : 1452 
+Error Message: Cannot add or update a child row: a foreign key constraint fails (`db_sekolah`.`kelas`, CONSTRAINT `kelas_ibfk_1` FOREIGN KEY (`id_sekolah`) REFERENCES `sekolah` (`id`)) 
