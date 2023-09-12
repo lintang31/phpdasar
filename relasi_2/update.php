@@ -1,29 +1,30 @@
 <?php 
-     include 'connect.php'; 
+include 'connect.php'; 
+// Code for get id from param 
+$id = $_GET['id']; 
+// Code for get data siswa by id param 
+$get_data = "select * from siswa where id_siswa=$id"; 
+$result_data = mysqli_query($conn, $get_data); 
+$row = mysqli_fetch_assoc($result_data); 
+$nama_siswa = $row['nama_siswa']; 
+$nisn = $row['nisn']; 
+$gender = $row['gender']; 
  
-     $id = $_GET['id']; 
-     $get_data = "select * from siswa where id_siswa=$id"; 
-     $result_data = mysqli_query($conn, $get_data); 
-     $row = mysqli_fetch_assoc($result_data); 
-     $nama_siswa = $row['nama_siswa']; 
-     $nisn = $row['nisn']; 
-     $gender = $row['gender']; 
-      
-     if (isset($_POST['submit'])) { 
-        $input_nama_siswa = $_POST['nama']; 
-        $input_nisn = $_POST['nisn']; 
-        $input_gender = $_POST['gender']; 
-        $input_id_kelas = $_POST['id_kelas']; 
-        $sql = "update siswa set id_siswa='$id', nama_siswa='$input_nama_siswa', gender='$gender',  
-        nisn='$input_nisn', id_kelas='$input_id_kelas'  where id_siswa=$id"; 
-        $result = mysqli_query($conn, $sql); 
-        if ($result) { 
-            header('location:siswa.php'); 
-        } else { 
-            die($conn->connect_error); 
-     } 
+// Code for update data siswa 
+if (isset($_POST['submit'])) { 
+    $input_nama_siswa = $_POST['nama']; 
+    $input_nisn = $_POST['nisn']; 
+    $input_gender = $_POST['gender']; 
+    $input_id_kelas = $_POST['id_kelas']; 
+    $sql = "update siswa set id_siswa=$id, nama_siswa='$input_nama_siswa', gender='$input_gender', nisn='$input_nisn', id_kelas='$input_id_kelas' where id_siswa=$id"; 
+    $result = mysqli_query($conn, $sql); 
+    if ($result) { 
+        header('location:siswa.php'); 
+    } else { 
+        die($conn->$connect_error); 
     } 
-?> 
+} 
+?>
 <!DOCTYPE html> 
 <html lang="en"> 
  
